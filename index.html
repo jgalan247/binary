@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binary Numbers - Year 7 Data Representation</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Binary Numbers</h1>
+    <p class="subtitle">Data Representation - Year 7</p>
+    <nav class="topnav">
+      <a href="#part1">1. Watch</a>
+      <a href="#part2">2. Binary Bonanza</a>
+      <a href="#part3">3. Convert</a>
+      <a href="#part4">4. Cisco Game</a>
+      <a href="#part5">5. Test</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =========================================== -->
+    <!-- PART 1: INTRO VIDEO + INTERACTIVE DEMO     -->
+    <!-- =========================================== -->
+    <section id="part1" class="lesson-block">
+      <h2><span class="step">1</span> What are Binary Numbers?</h2>
+      <p class="lead">Watch this short video (5 minutes). It will explain what binary numbers are.</p>
+
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/kcTwu6TFZ08"
+          title="What are Binary Numbers?"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+
+      <div class="info-box">
+        <h3>Quick recap</h3>
+        <ul>
+          <li>Computers only understand <strong>two</strong> values: <strong>0</strong> and <strong>1</strong>.</li>
+          <li>Each 0 or 1 is called a <strong>bit</strong>.</li>
+          <li>8 bits together are called a <strong>byte</strong>.</li>
+          <li>Each position has a value: 1, 2, 4, 8, 16, 32, 64, 128.</li>
+        </ul>
+      </div>
+
+      <h3>Try it yourself - Click the bits!</h3>
+      <p>Click each square to switch it between <strong>0</strong> and <strong>1</strong>. Watch the number change!</p>
+
+      <div class="binary-demo" id="binaryDemo">
+        <div class="bit-row">
+          <div class="bit-cell" data-value="128"><div class="place">128</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="64"><div class="place">64</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="32"><div class="place">32</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="16"><div class="place">16</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="8"><div class="place">8</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="4"><div class="place">4</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="2"><div class="place">2</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="1"><div class="place">1</div><div class="bit">0</div></div>
+        </div>
+        <div class="result">
+          <div>Binary: <span id="demoBinary">00000000</span></div>
+          <div>Denary: <span id="demoDenary">0</span></div>
+        </div>
+        <button class="btn-secondary" id="resetDemo">Reset</button>
+      </div>
+    </section>
+
+    <!-- =========================================== -->
+    <!-- PART 2: BINARY BONANZA                      -->
+    <!-- =========================================== -->
+    <section id="part2" class="lesson-block alt">
+      <h2><span class="step">2</span> Game Time: Binary Bonanza</h2>
+      <p class="lead">Time to play! Binary Bonanza will help you convert <strong>denary into binary</strong>.</p>
+
+      <div class="how-to">
+        <h3>How to play</h3>
+        <ol>
+          <li>Watch the teacher's demo first.</li>
+          <li>The game has <strong>10 levels</strong> - try to reach the highest level you can!</li>
+          <li>You will see a denary (normal) number. Click the bits to make the matching binary number.</li>
+        </ol>
+        <div class="prize-box">
+          <span class="trophy">&#127942;</span>
+          <p><strong>Reward!</strong> The first <strong>5 students</strong> to reach the highest level will get a <strong>"4" Achievement Point</strong>!</p>
+        </div>
+      </div>
+
+      <a class="btn-play" href="https://games.penjee.com/binary-bonanza/" target="_blank" rel="noopener">
+        Play Binary Bonanza &#9654;
+      </a>
+    </section>
+
+    <!-- =========================================== -->
+    <!-- PART 3: CONVERTING TO DENARY                -->
+    <!-- =========================================== -->
+    <section id="part3" class="lesson-block">
+      <h2><span class="step">3</span> Binary to Denary</h2>
+      <p class="lead">Now we go the other way: from <strong>binary</strong> to a normal (denary) number.</p>
+
+      <div class="info-box">
+        <h3>The trick</h3>
+        <p>Whenever you see a <strong>1</strong>, add the place value above it. Ignore the 0s.</p>
+        <p class="example">Example: <code>0 0 0 0 1 0 1 1</code> &rarr; 8 + 2 + 1 = <strong>11</strong></p>
+      </div>
+
+      <h3>Try it - Set a binary number and see the denary value</h3>
+      <p>Click each bit to switch between 0 and 1. The denary number is calculated for you.</p>
+
+      <div class="binary-demo" id="convertDemo">
+        <div class="bit-row">
+          <div class="bit-cell" data-value="128"><div class="place">128</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="64"><div class="place">64</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="32"><div class="place">32</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="16"><div class="place">16</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="8"><div class="place">8</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="4"><div class="place">4</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="2"><div class="place">2</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="1"><div class="place">1</div><div class="bit">0</div></div>
+        </div>
+        <div class="working" id="convertWorking">Click bits to add up the values</div>
+        <div class="result">
+          <div>Binary: <span id="convertBinary">00000000</span></div>
+          <div>Denary: <span id="convertDenary">0</span></div>
+        </div>
+        <button class="btn-secondary" id="resetConvert">Reset</button>
+      </div>
+    </section>
+
+    <!-- =========================================== -->
+    <!-- PART 4: CISCO GAME                          -->
+    <!-- =========================================== -->
+    <section id="part4" class="lesson-block alt">
+      <h2><span class="step">4</span> Game Time: Cisco Binary Game</h2>
+      <p class="lead">Practise converting both ways with the famous Cisco Binary Game!</p>
+
+      <div class="how-to">
+        <h3>How to play</h3>
+        <ol>
+          <li>Numbers fall down the screen.</li>
+          <li>If a binary number falls, type the matching denary number.</li>
+          <li>If a denary number falls, click the bits to make the binary.</li>
+          <li>Don't let too many fall off the bottom!</li>
+        </ol>
+      </div>
+
+      <a class="btn-play" href="https://learningcontent.cisco.com/games/binary/index.html" target="_blank" rel="noopener">
+        Play Cisco Binary Game &#9654;
+      </a>
+    </section>
+
+    <!-- =========================================== -->
+    <!-- PART 5: TEST                                -->
+    <!-- =========================================== -->
+    <section id="part5" class="lesson-block test">
+      <h2><span class="step">5</span> Your Turn - Mini Test</h2>
+      <p class="lead">Type your answer in each box. <strong>Green = correct</strong>, <strong>Red = try again</strong>.</p>
+
+      <form id="quizForm" novalidate>
+        <h3>Part A - Binary to Denary</h3>
+        <div class="q">
+          <label>1) What is <code>00000101</code> in denary?</label>
+          <input type="text" class="quiz-input" data-answer="5" data-type="number" inputmode="numeric" />
+        </div>
+        <div class="q">
+          <label>2) What is <code>00001010</code> in denary?</label>
+          <input type="text" class="quiz-input" data-answer="10" data-type="number" inputmode="numeric" />
+        </div>
+        <div class="q">
+          <label>3) What is <code>00010000</code> in denary?</label>
+          <input type="text" class="quiz-input" data-answer="16" data-type="number" inputmode="numeric" />
+        </div>
+        <div class="q">
+          <label>4) What is <code>00011001</code> in denary?</label>
+          <input type="text" class="quiz-input" data-answer="25" data-type="number" inputmode="numeric" />
+        </div>
+
+        <h3>Part B - Denary to Binary</h3>
+        <p class="hint">Use 8 bits. Example: 5 = <code>00000101</code></p>
+        <div class="q">
+          <label>5) What is <strong>3</strong> in binary?</label>
+          <input type="text" class="quiz-input" data-answer="00000011" data-type="binary" inputmode="numeric" />
+        </div>
+        <div class="q">
+          <label>6) What is <strong>8</strong> in binary?</label>
+          <input type="text" class="quiz-input" data-answer="00001000" data-type="binary" inputmode="numeric" />
+        </div>
+        <div class="q">
+          <label>7) What is <strong>20</strong> in binary?</label>
+          <input type="text" class="quiz-input" data-answer="00010100" data-type="binary" inputmode="numeric" />
+        </div>
+        <div class="q">
+          <label>8) What is <strong>33</strong> in binary?</label>
+          <input type="text" class="quiz-input" data-answer="00100001" data-type="binary" inputmode="numeric" />
+        </div>
+
+        <h3>Part C - Multiple Choice</h3>
+        <div class="q mcq" data-answer="b">
+          <p>9) How many values can a single <strong>bit</strong> hold?</p>
+          <label><input type="radio" name="q9" value="a" /> 1 value</label>
+          <label><input type="radio" name="q9" value="b" /> 2 values</label>
+          <label><input type="radio" name="q9" value="c" /> 8 values</label>
+          <label><input type="radio" name="q9" value="d" /> 10 values</label>
+        </div>
+        <div class="q mcq" data-answer="c">
+          <p>10) Which one is the largest number?</p>
+          <label><input type="radio" name="q10" value="a" /> <code>00001111</code></label>
+          <label><input type="radio" name="q10" value="b" /> <code>00010000</code></label>
+          <label><input type="radio" name="q10" value="c" /> <code>10000000</code></label>
+          <label><input type="radio" name="q10" value="d" /> <code>00111100</code></label>
+        </div>
+
+        <button type="button" class="btn-primary" id="checkBtn">Check my answers</button>
+        <button type="button" class="btn-secondary" id="resetQuiz">Reset</button>
+      </form>
+
+      <div id="scoreBox" class="score-box hidden">
+        <h3>Your Score</h3>
+        <p class="score-num"><span id="scoreNum">0</span> / 10</p>
+        <p id="scoreMessage"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Year 7 - Data Representation - Lesson 1: Binary</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

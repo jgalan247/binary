@@ -1,0 +1,326 @@
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-bg: #bbf7d0;
+  --bad: #dc2626;
+  --bad-bg: #fecaca;
+  --bg: #f5f7ff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ---------- Header ---------- */
+.hero {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+  color: white;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+.hero h1 {
+  margin: 0;
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+}
+.subtitle {
+  margin: 0.25rem 0 1rem;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.topnav a {
+  background: rgba(255,255,255,0.18);
+  color: white;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.topnav a:hover { background: rgba(255,255,255,0.35); }
+
+/* ---------- Sections ---------- */
+main { max-width: 980px; margin: 0 auto; padding: 1rem; }
+
+.lesson-block {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.lesson-block.alt { background: #fff7ed; }
+.lesson-block.test { background: #ecfeff; }
+
+.lesson-block h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.step {
+  display: inline-flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.lead { font-size: 1.1rem; }
+
+/* ---------- Video ---------- */
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 1rem 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+.video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* ---------- Info box ---------- */
+.info-box {
+  background: #eef2ff;
+  border-left: 6px solid var(--primary);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.info-box h3 { margin-top: 0; }
+.example { background: white; padding: 0.6rem 0.8rem; border-radius: 8px; }
+
+/* ---------- Binary demo ---------- */
+.binary-demo {
+  background: #fffbeb;
+  border: 3px dashed var(--accent);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+.bit-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1rem;
+}
+.bit-cell {
+  width: 70px;
+  background: white;
+  border-radius: 10px;
+  padding: 0.4rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s;
+}
+.bit-cell:hover { transform: translateY(-2px); }
+.bit-cell .place {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: bold;
+}
+.bit-cell .bit {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text);
+  background: #f3f4f6;
+  border-radius: 6px;
+  margin-top: 0.3rem;
+}
+.bit-cell.on .bit {
+  background: var(--good);
+  color: white;
+}
+.result {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0.6rem 0;
+}
+.result span {
+  display: inline-block;
+  background: white;
+  padding: 0.2rem 0.7rem;
+  border-radius: 8px;
+  margin-left: 0.4rem;
+  color: var(--primary-dark);
+  font-family: "Courier New", monospace;
+}
+.working {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+  font-weight: bold;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary, .btn-secondary, .btn-play {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.2s;
+  margin: 0.4rem 0.2rem;
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary {
+  background: #e5e7eb;
+  color: var(--text);
+}
+.btn-secondary:hover { background: #d1d5db; }
+.btn-play {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: white;
+  font-size: 1.3rem;
+  padding: 1rem 2rem;
+  box-shadow: 0 6px 14px rgba(239,68,68,0.4);
+}
+.btn-play:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(239,68,68,0.5); }
+
+/* ---------- How-to + prize ---------- */
+.how-to ol { line-height: 1.9; }
+.prize-box {
+  background: linear-gradient(135deg, #fde68a, #fbbf24);
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.prize-box .trophy { font-size: 2.5rem; }
+.prize-box p { margin: 0; }
+
+/* ---------- Quiz / test ---------- */
+.q {
+  background: white;
+  padding: 0.9rem 1rem;
+  margin: 0.6rem 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.q label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+.q.mcq label {
+  display: block;
+  font-weight: normal;
+  background: #f9fafb;
+  padding: 0.5rem 0.7rem;
+  margin: 0.3rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.q.mcq label:hover { background: #f3f4f6; }
+.q.mcq.correct { background: var(--good-bg); border: 2px solid var(--good); }
+.q.mcq.wrong { background: var(--bad-bg); border: 2px solid var(--bad); }
+.q code {
+  background: #f3f4f6;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.quiz-input {
+  width: 100%;
+  font-size: 1.3rem;
+  font-family: "Courier New", monospace;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.quiz-input:focus { border-color: var(--primary); }
+.quiz-input.correct {
+  background: var(--good-bg);
+  border-color: var(--good);
+}
+.quiz-input.wrong {
+  background: var(--bad-bg);
+  border-color: var(--bad);
+}
+.hint { color: var(--muted); font-style: italic; margin: 0.3rem 0; }
+
+/* ---------- Score ---------- */
+.score-box {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(79,70,229,0.3);
+}
+.score-box.hidden { display: none; }
+.score-num {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+.score-num span { color: var(--accent); }
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .bit-cell { width: 56px; }
+  .bit-cell .bit { font-size: 1.5rem; }
+  .lesson-block h2 { font-size: 1.4rem; }
+}
