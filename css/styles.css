@@ -191,6 +191,66 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
   font-weight: bold;
 }
 
+/* ---------- Challenge widget ---------- */
+.challenge-block {
+  background: #ecfeff;
+  border: 3px solid #06b6d4;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  text-align: center;
+}
+.challenge-block h3 { margin-top: 0; color: #0e7490; }
+.challenge-info {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+.challenge-prompt {
+  font-size: 1.4rem;
+  margin: 0.6rem 0;
+}
+.challenge-prompt strong, .challenge-prompt code {
+  background: #fef3c7;
+  padding: 0.15rem 0.6rem;
+  border-radius: 8px;
+  color: #92400e;
+  font-size: 1.5rem;
+}
+.ch-input {
+  font-size: 1.5rem;
+  font-family: "Courier New", monospace;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  text-align: center;
+  width: 200px;
+  margin: 0.4rem 0;
+}
+.ch-input:focus { border-color: var(--primary); }
+.ch-input.correct { background: var(--good-bg); border-color: var(--good); }
+.ch-input.wrong   { background: var(--bad-bg);  border-color: var(--bad); }
+.feedback {
+  min-height: 1.5rem;
+  font-weight: bold;
+  margin: 0.4rem 0;
+}
+.feedback.good { color: var(--good); }
+.feedback.bad  { color: var(--bad); }
+.challenge-block .btn-primary[disabled] {
+  background: #c7d2fe;
+  cursor: not-allowed;
+}
+.challenge-block.done {
+  background: linear-gradient(135deg, #bbf7d0, #fef3c7);
+  border-color: var(--good);
+}
+
 /* ---------- Buttons ---------- */
 .btn-primary, .btn-secondary, .btn-play {
   display: inline-block;

@@ -5,6 +5,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   setupBinaryDemo("binaryDemo", "demoBinary", "demoDenary", null, "resetDemo");
   setupBinaryDemo("convertDemo", "convertBinary", "convertDenary", "convertWorking", "resetConvert");
+  setupBitChallenge("challenge1", [3, 6, 9, 12, 15, 18, 24, 31, 42, 55]);
+  setupTypeChallenge("challenge2", [
+    "00000010", "00000111", "00001100", "00010001", "00010110",
+    "00011110", "00100100", "00101101", "00110000", "01000001"
+  ]);
   setupQuiz();
 });
 
@@ -58,6 +63,187 @@ function setupBinaryDemo(containerId, binaryOutId, denaryOutId, workingId, reset
       update();
     });
   }
+}
+
+// --------------------------------------------
+// Challenge: click bits to match a target denary
+// --------------------------------------------
+function setupBitChallenge(blockId, targets) {
+  const block = document.getElementById(blockId);
+  if (!block) return;
+
+  const cells     = block.querySelectorAll(".bit-cell");
+  const numEl     = block.querySelector(".ch-num");
+  const scoreEl   = block.querySelector(".ch-score");
+  const targetEl  = block.querySelector(".ch-target");
+  const binEl     = block.querySelector(".ch-bin");
+  const denEl     = block.querySelector(".ch-den");
+  const fb        = block.querySelector(".ch-feedback");
+  const nextBtn   = block.querySelector(".ch-next");
+  const restartBt = block.querySelector(".ch-restart");
+
+  let idx = 0;
+  let score = 0;
+  let solved = false;
+
+  const clearBits = () => cells.forEach(c => c.classList.remove("on"));
+
+  const render = () => {
+    let binary = "";
+    let total = 0;
+    cells.forEach(cell => {
+      const on = cell.classList.contains("on");
+      cell.querySelector(".bit").textContent = on ? "1" : "0";
+      binary += on ? "1" : "0";
+      if (on) total += parseInt(cell.dataset.value, 10);
+    });
+    binEl.textContent = binary;
+    denEl.textContent = total;
+
+    const target = targets[idx];
+    if (!solved && total === target) {
+      solved = true;
+      score++;
+      scoreEl.textContent = score;
+      fb.textContent = "✅ Correct! Click Next.";
+      fb.className = "feedback ch-feedback good";
+      nextBtn.disabled = false;
+    } else if (!solved) {
+      fb.textContent = "";
+      fb.className = "feedback ch-feedback";
+    }
+  };
+
+  const loadChallenge = () => {
+    solved = false;
+    clearBits();
+    numEl.textContent = idx + 1;
+    targetEl.textContent = targets[idx];
+    fb.textContent = "";
+    fb.className = "feedback ch-feedback";
+    nextBtn.disabled = true;
+    block.classList.remove("done");
+    render();
+  };
+
+  cells.forEach(cell => cell.addEventListener("click", () => {
+    if (solved) return;
+    cell.classList.toggle("on");
+    render();
+  }));
+
+  nextBtn.addEventListener("click", () => {
+    if (idx < targets.length - 1) {
+      idx++;
+      loadChallenge();
+    } else {
+      block.classList.add("done");
+      fb.textContent = "\u{1F389} All 10 done! Final score: " + score + " / " + targets.length;
+      fb.className = "feedback ch-feedback good";
+      nextBtn.disabled = true;
+    }
+  });
+
+  restartBt.addEventListener("click", () => {
+    idx = 0;
+    score = 0;
+    scoreEl.textContent = "0";
+    loadChallenge();
+  });
+
+  loadChallenge();
+}
+
+// --------------------------------------------
+// Challenge: type the denary for a binary
+// --------------------------------------------
+function setupTypeChallenge(blockId, binaries) {
+  const block = document.getElementById(blockId);
+  if (!block) return;
+
+  const numEl     = block.querySelector(".ch-num");
+  const scoreEl   = block.querySelector(".ch-score");
+  const targetEl  = block.querySelector(".ch-target");
+  const input     = block.querySelector(".ch-input");
+  const fb        = block.querySelector(".ch-feedback");
+  const checkBtn  = block.querySelector(".ch-check");
+  const nextBtn   = block.querySelector(".ch-next");
+  const restartBt = block.querySelector(".ch-restart");
+
+  let idx = 0;
+  let score = 0;
+  let solved = false;
+
+  const denaryOf = bin => parseInt(bin, 2);
+
+  const loadChallenge = () => {
+    solved = false;
+    numEl.textContent = idx + 1;
+    targetEl.textContent = binaries[idx];
+    input.value = "";
+    input.classList.remove("correct", "wrong");
+    input.disabled = false;
+    fb.textContent = "";
+    fb.className = "feedback ch-feedback";
+    checkBtn.disabled = false;
+    nextBtn.disabled = true;
+    block.classList.remove("done");
+    input.focus();
+  };
+
+  const check = () => {
+    if (solved) return;
+    const expected = denaryOf(binaries[idx]);
+    const given = parseInt(input.value.trim(), 10);
+    if (given === expected) {
+      solved = true;
+      score++;
+      scoreEl.textContent = score;
+      input.classList.add("correct");
+      input.disabled = true;
+      fb.textContent = "✅ Correct! Click Next.";
+      fb.className = "feedback ch-feedback good";
+      checkBtn.disabled = true;
+      nextBtn.disabled = false;
+    } else {
+      input.classList.remove("correct");
+      input.classList.add("wrong");
+      fb.textContent = "❌ Not quite - try again.";
+      fb.className = "feedback ch-feedback bad";
+    }
+  };
+
+  input.addEventListener("input", () => input.classList.remove("wrong"));
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (solved) nextBtn.click();
+      else check();
+    }
+  });
+  checkBtn.addEventListener("click", check);
+
+  nextBtn.addEventListener("click", () => {
+    if (idx < binaries.length - 1) {
+      idx++;
+      loadChallenge();
+    } else {
+      block.classList.add("done");
+      fb.textContent = "\u{1F389} All 10 done! Final score: " + score + " / " + binaries.length;
+      fb.className = "feedback ch-feedback good";
+      nextBtn.disabled = true;
+      checkBtn.disabled = true;
+    }
+  });
+
+  restartBt.addEventListener("click", () => {
+    idx = 0;
+    score = 0;
+    scoreEl.textContent = "0";
+    loadChallenge();
+  });
+
+  loadChallenge();
 }
 
 // --------------------------------------------

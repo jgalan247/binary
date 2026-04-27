@@ -66,6 +66,34 @@
         </div>
         <button class="btn-secondary" id="resetDemo">Reset</button>
       </div>
+
+      <!-- 10 challenges: denary -> binary (click bits) -->
+      <div class="challenge-block" id="challenge1">
+        <h3>&#127919; 10 Quick Challenges - Make the Number!</h3>
+        <p>Click the bits to make the target number. The box turns green when you get it right!</p>
+        <div class="challenge-info">
+          <div>Challenge <span class="ch-num">1</span> of 10</div>
+          <div>Score: <span class="ch-score">0</span></div>
+        </div>
+        <p class="challenge-prompt">Make the number <strong class="ch-target">3</strong></p>
+        <div class="bit-row">
+          <div class="bit-cell" data-value="128"><div class="place">128</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="64"><div class="place">64</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="32"><div class="place">32</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="16"><div class="place">16</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="8"><div class="place">8</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="4"><div class="place">4</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="2"><div class="place">2</div><div class="bit">0</div></div>
+          <div class="bit-cell" data-value="1"><div class="place">1</div><div class="bit">0</div></div>
+        </div>
+        <div class="result">
+          Your binary: <span class="ch-bin">00000000</span>
+          Denary: <span class="ch-den">0</span>
+        </div>
+        <div class="feedback ch-feedback"></div>
+        <button class="btn-primary ch-next" disabled>Next &rarr;</button>
+        <button class="btn-secondary ch-restart">Start over</button>
+      </div>
     </section>
 
     <!-- =========================================== -->
@@ -126,6 +154,22 @@
           <div>Denary: <span id="convertDenary">0</span></div>
         </div>
         <button class="btn-secondary" id="resetConvert">Reset</button>
+      </div>
+
+      <!-- 10 challenges: binary -> denary (type answer) -->
+      <div class="challenge-block" id="challenge2">
+        <h3>&#127919; 10 Quick Challenges - What's the Denary?</h3>
+        <p>Read the binary number and type the matching denary number. Press <strong>Check</strong> or hit Enter.</p>
+        <div class="challenge-info">
+          <div>Challenge <span class="ch-num">1</span> of 10</div>
+          <div>Score: <span class="ch-score">0</span></div>
+        </div>
+        <p class="challenge-prompt">What is <code class="ch-target">00000010</code> in denary?</p>
+        <input type="text" class="ch-input" inputmode="numeric" placeholder="Type your answer" />
+        <div class="feedback ch-feedback"></div>
+        <button class="btn-primary ch-check">Check</button>
+        <button class="btn-primary ch-next" disabled>Next &rarr;</button>
+        <button class="btn-secondary ch-restart">Start over</button>
       </div>
     </section>
 
